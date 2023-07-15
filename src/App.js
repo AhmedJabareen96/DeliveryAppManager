@@ -10,6 +10,10 @@ import TestLifeCycle from './components/Test/TestLifeCycle';
 import { Provider } from './Context';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import Login from "./components/Login/Login";
+import Register from "./components/Register/Register";
+import ForgotYourPassword from "./components/ForgotPassword/ForgotYourPassword";
+
 
 class App extends Component {
   render() {
@@ -24,6 +28,9 @@ class App extends Component {
               <Route exact path='/contact/add' element={<AddContact />} />
               <Route exact path='/contact/edit/:id' element={<EditContact />} />
               <Route exact path='/orders'       element={<About />} />
+              <Route exact path='/login'       element={<Login />} />
+              <Route exact path='/register'       element={<Register />} />
+              <Route exact path='/forgot-password'       element={<ForgotYourPassword />} />
               <Route exact path='/test'        element={<TestLifeCycle favColor = 'yellow'/>} />
               <Route path='*' element={<NotFound />} />
             </Routes>
