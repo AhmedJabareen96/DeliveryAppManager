@@ -4,16 +4,26 @@ import { Link } from 'react-router-dom';
 import styles from './Login.module.css';
 import { useNavigate} from "react-router-dom";
 import axios from "axios";
+import {UserContext} from "../../UserContext";
 
 const Login = () => {
+    const { username, setUsername} = useContext(UserContext);
     const navigate = useNavigate()
     const [password, setPassword] = useState()
     function handleLoginButton() {
-    console.log("HandleSubmitLogin");
+        axios.post("http://localhost:5000/managers/loginEmail",{
+            email: username,
+            password: password
+        }).then(() =>{
+            console.log(`Hello ${username}`)
+            navigate('/')
+        }).catch(err=>{
+            console.log(err)
+        })
     }
 
     function handleUsernameChange(event) {
-        console.log(event.target.value);
+        setUsername(event.target.value)
     }
     function handlePasswordChange(event){
         setPassword(event.target.value)

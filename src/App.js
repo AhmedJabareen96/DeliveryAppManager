@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Route, BrowserRouter, Routes } from 'react-router-dom';
 import Contacts from './components/contacts/Contacts';
 import AddContact from './components/contacts/AddContact';
@@ -16,7 +16,9 @@ import ForgotYourPassword from './components/ForgotPassword/ForgotYourPassword';
 import { UserContext } from './UserContext';
 
 const App = () => {
+  const [username, setUsername] = useState();
   return (
+    <UserContext.Provider value={{username, setUsername}}>
     <Provider>
       <BrowserRouter>
         <div className="App">
@@ -37,6 +39,7 @@ const App = () => {
         </div>
       </BrowserRouter>
     </Provider>
+    </UserContext.Provider>
   );
 };
 
