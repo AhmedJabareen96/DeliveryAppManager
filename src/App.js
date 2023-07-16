@@ -17,8 +17,9 @@ import { UserContext } from './UserContext';
 
 const App = () => {
   const [username, setUsername] = useState();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   return (
-    <UserContext.Provider value={{username, setUsername}}>
+    <UserContext.Provider value={{username, setUsername, isLoggedIn, setIsLoggedIn}}>
     <Provider>
       <BrowserRouter>
         <div className="App">

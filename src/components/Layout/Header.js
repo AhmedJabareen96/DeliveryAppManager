@@ -5,11 +5,11 @@ import { UserContext } from '../../UserContext';
 // import './Header.css';
 
 const Header = (props) => {
-  const { username, setUsername } = useContext(UserContext);
+  const { username, setUsername, isLoggedIn, setIsLoggedIn } = useContext(UserContext);
   const { branding } = props;
 
   const handleLogout = () => {
-    setUsername(null);
+    setIsLoggedIn(false);
   };
 
   return (
@@ -21,7 +21,7 @@ const Header = (props) => {
 
         <div className="row">
           <ul className="navbar nav mr-auto">
-            {username === null ? (
+            {isLoggedIn === false ? (
               <li className="nav-item">
                 <Link to="/login" className="nav-link" style={{ color: 'white' }}>
                   <i className="fa fa-plus"></i> Login

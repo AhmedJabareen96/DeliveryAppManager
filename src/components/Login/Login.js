@@ -7,20 +7,25 @@ import axios from "axios";
 import {UserContext} from "../../UserContext";
 
 const Login = () => {
-    const { username, setUsername} = useContext(UserContext);
+    const { username, setUsername, isLoggedIn, setIsLoggedIn} = useContext(UserContext);
     const navigate = useNavigate()
     const [password, setPassword] = useState()
     function handleLoginButton() {
-        axios.post("http://localhost:5000/managers/loginEmail",{
-            email: username,
-            password: password
-        }).then(() =>{
-            console.log(`Hello ${username}`)
-            navigate('/')
-        }).catch(err=>{
-            console.log(err)
-        })
+        axios
+    .post("http://localhost:5000/managers/loginEmail", {
+        email: username,
+        password: password
+    })
+    .then(() => {
+        console.log(`Hello ${username}`);
+        setIsLoggedIn(true); // Set isLoggedIn to true
+        navigate('/');
+    })
+    .catch(err => {
+        console.log(err);
+    });
     }
+
 
     function handleUsernameChange(event) {
         setUsername(event.target.value)
