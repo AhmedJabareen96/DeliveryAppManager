@@ -1,22 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Button, TextField } from '@mui/material';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import styles from './ForgotYourPassword.module.css';
+import {UserContext} from "../../UserContext";
 
 const ForgotYourPassword = () => {
   const [areaValue, setAreaValue] = useState('');
+  const { username, setUsername} = useContext(UserContext);
 
   const handleAreaChange = (e) => {
     setAreaValue(e.target.value);
   };
+  
+  const handleEmailChange = (e) =>{
+      setUsername(e.target.value);
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     // Send the form data to the server using Axios
     axios
-      .post('http://localhost:5000/managers/forgot-password', { areaValue })
+      .post('http://localhost:5000/managers/forgot-password', {
+          message: areaValue,
+          username: username
+      })
       .then((response) => {
         // Handle the response from the server
         console.log(response.data);
@@ -37,6 +46,7 @@ const ForgotYourPassword = () => {
             label="Email"
             variant="standard"
             className={styles['text-field']}
+              onChange={handleEmailChange}
           />
           <TextField
             id="forgot-area"
