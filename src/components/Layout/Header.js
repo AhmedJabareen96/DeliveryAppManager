@@ -1,52 +1,79 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { UserContext } from '../../UserContext';
 // import './Header.css';
 
 const Header = (props) => {
-    const { branding } = props;
-    
+  const { username, setUsername } = useContext(UserContext);
+  const { branding } = props;
+
+  const handleLogout = () => {
+    setUsername(null);
+  };
+
   return (
-    <nav className='navbar navbar-expand-sm navbar-dark bg-danger mb-3 py-0'>
-      <div className='container'>
+    <nav className="navbar navbar-expand-sm navbar-dark bg-danger mb-3 py-0">
+      <div className="container">
         <Link to="/" className="navbar-brand">
-            {branding} 
+          {branding}
         </Link>
 
-        <div className='row'>
-            <ul className="navbar nav mr-auto">
+        <div className="row">
+          <ul className="navbar nav mr-auto">
+            {username === null ? (
+              <li className="nav-item">
+                <Link to="/login" className="nav-link" style={{ color: 'white' }}>
+                  <i className="fa fa-plus"></i> Login
+                </Link>
+              </li>
+            ) : (
+              <>
                 <li className="nav-item">
-                    <Link to="/" className="nav-link" style={ {color:'white'} }> <i className='fa fa-home'></i> Drivers List</Link>
+                  <Link to="/" className="nav-link" style={{ color: 'white' }}>
+                    <i className="fa fa-home"></i> Drivers List
+                  </Link>
                 </li>
                 <li className="nav-item">
-                    <Link to="/orders" className="nav-link" style={ {color:'white'} }> <i className='fa fa-info-circle'></i> Orders</Link>
+                  <Link to="/orders" className="nav-link" style={{ color: 'white' }}>
+                    <i className="fa fa-info-circle"></i> Orders
+                  </Link>
                 </li>
                 <li className="nav-item">
-                    <Link to="/items" className="nav-link" style={ {color:'white'} }> <i className='fa fa-info-circle'></i> Items</Link>
-                </li>
-                
-                <li className="nav-item">
-                    <Link to="/contact/add" className="nav-link" style={ {color:'white'} }><i className='fa fa-plus'></i> Add Driver</Link>
+                  <Link to="/items" className="nav-link" style={{ color: 'white' }}>
+                    <i className="fa fa-info-circle"></i> Items
+                  </Link>
                 </li>
                 <li className="nav-item">
-                    <Link to="./contact/add" className="nav-link" style={ {color:'white'} }><i className='fa fa-plus'></i> Add Store</Link>
+                  <Link to="/contact/add" className="nav-link" style={{ color: 'white' }}>
+                    <i className="fa fa-plus"></i> Add Driver
+                  </Link>
                 </li>
-                {/* <li className="nav-item">
-                    <Link to="/test" className="nav-link" style={ {color:'white'} }><i className='fa fa-check'></i> Test</Link>
-                </li> */}
-            </ul>
+                <li className="nav-item">
+                  <Link to="./contact/add" className="nav-link" style={{ color: 'white' }}>
+                    <i className="fa fa-plus"></i> Add Store
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="/login" className="nav-link" style={{ color: 'white' }} onClick={handleLogout}>
+                    <i className="fa fa-sign-out"></i> Logout
+                  </Link>
+                </li>
+              </>
+            )}
+          </ul>
         </div>
-      </div>  
+      </div>
     </nav>
   );
 };
 
 Header.defaultProps = {
-    branding : 'My App'
-}
+  branding: 'My App',
+};
+
 Header.propTypes = {
-    branding : PropTypes.string.isRequired
-}
+    branding: PropTypes.string.isRequired,
+};
 
-
-export default Header
+export default Header;

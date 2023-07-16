@@ -62,7 +62,7 @@ class AddContact extends Component {
             phone
         };
 
-        const res = await axios.post('http://jsonplaceholder.typicode.com/users', newContact);
+        const res = await axios.post('http://localhost:5000/delivers/add', newContact);
 
         dispatch({type : 'ADD_CONTACT', payload : res.data })    
 

@@ -30,6 +30,7 @@ export class Provider extends Component{
     // }
 
     async componentDidMount() {
+        // get the contacts data from here
     const res = await axios.get('https://jsonplaceholder.typicode.com/users')
             // .then(response => response.json())
 
