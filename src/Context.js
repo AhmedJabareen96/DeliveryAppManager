@@ -35,6 +35,7 @@ export class Provider extends Component{
             // .then(response => response.json())
             console.log(res.data);
             this.setState({ contacts : res.data })
+
     }
 
     render() {
