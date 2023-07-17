@@ -31,10 +31,11 @@ export class Provider extends Component{
 
     async componentDidMount() {
         // get the contacts data from here
-    const res = await axios.get('https://jsonplaceholder.typicode.com/users')
+    const res = await axios.get('http://localhost:5000/delivers/')
             // .then(response => response.json())
-
+            console.log(res.data);
             this.setState({ contacts : res.data })
+
     }
 
     render() {
