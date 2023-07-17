@@ -13,13 +13,20 @@ class EditContact extends Component {
    };
 
    async componentDidMount(){
+    // get the contacts data from here
+const res = await axios.get('http://localhost:5000/delivers/')
+        // .then(response => response.json())
+        console.log(res.data);
+        this.setState({ contacts : res.data })
 
-
-   }
+}
 
     onSubmit = async (dispatch, e) => {
 
-        axios.put("http//localhost:5000/delivers/update/"+this.state._id);
+        const ID = window.location.href.split("/")
+        alert(ID[ID.length-1])
+
+        axios.put("http//localhost:5000/delivers/update/"+ID[ID.length-1,this.state]);
         alert("done update!")
 
 
@@ -36,7 +43,11 @@ class EditContact extends Component {
 
   render() {
     const { name, email, phoneNumber,carType,carNumber ,createdAt,drivingLicense,_id} = this.state;
+   // alert(this.state._id)
    // const { id, name, email, phoneNumber    } = this.props.contact;
+
+   //const ID = window.location.href.split("/")
+   //alert(ID[ID.length-1])
 
     const { showContactInfo } = this.state;
 

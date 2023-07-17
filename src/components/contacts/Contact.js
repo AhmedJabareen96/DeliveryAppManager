@@ -20,17 +20,20 @@ class Contact extends Component {
 
     const { id, name, email, phoneNumber,carType,carNumber ,createdAt,drivingLicense,_id    } = this.props.contact;
     const { showContactInfo } = this.state;
+    
 
     return (
     <Consumer>
       { value => {
         const { dispatch } = value;
+       // alert(_id)
         return ( 
           <div className='card card-body mb-3'>
             <h2>{name} <i onClick={ () => this.setState({ showContactInfo: !this.state.showContactInfo })} className="fas fa-sort-down" style={{cursor : 'pointer'}}/>
               <i className="fas fa-times" style={{cursor : 'pointer', float : 'right', color : 'red'}} onClick = { this.onDeleteClick.bind(this, id, dispatch) } />
               
-              <Link to={`contact/edit/${id}`}>
+              <Link to={`contact/edit/${_id}`}>
+                
                 <i className = 'fa fa-edit' style = {{cursor : 'pointer', float : 'right', color : 'blue', marginRight : '1rem'}}></i>
               </Link>
             </h2>
