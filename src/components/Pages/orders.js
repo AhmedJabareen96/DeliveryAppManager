@@ -18,6 +18,15 @@ const About = () => {
       <span className='text-danger'>Orders</span> List
     </h1>
     <ul className='list-group-item'>{listItems}</ul>
+    <ul className='list-group'>
+      <li></li>
+    </ul>
+{/* 
+    {showContactInfo ? (
+              <ul className='list-group'>
+                <li className='list-group-item'>Email : {email}</li>
+                <li className='list-group-item'>Phone : {phone}</li>
+              </ul> ): null } */}
 
     </>
   );

@@ -39,6 +39,7 @@ class Contact extends Component {
               <ul className='list-group'>
                 <li className='list-group-item'>Email : {email}</li>
                 <li className='list-group-item'>Phone : {phone}</li>
+                
               </ul> ): null }
   
           </div>
