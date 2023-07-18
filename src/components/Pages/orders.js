@@ -2,13 +2,17 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const About = () => {
-  const [people, setPeople] = useState([]);
-
+  const [Orders, setOrders] = useState([]);
+  const [items,setItems] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get('http://localhost:5000/deliveries/');
-        setPeople(response.data);
+        setOrders(response.data);
+        const allItemIds =Orders.storesAndItems.flatMap(item => 
+         item.itemIds);
+        
+        setItems(allItemIds)
       } catch (error) {
         console.log('Error fetching data from the API:', error);
       }
@@ -17,7 +21,24 @@ const About = () => {
     fetchData();
   }, []);
 
-  const listItems = people.map(person => <li key={person.id}>{person.name}: {person.profession}</li>);
+  const listItems = Orders.map(order => <li key={order.clientId}> <p>created At :</p>{order.createdAt}:
+  <p>order ID : </p> {order._id}:
+  <p>client ID :</p> {order.clientId}:
+  <p>Items :</p> {
+  
+  
+  console.log(items)
+  
+  
+  };
+  
+  </li>)
+
+
+  
+  
+  
+  ;
 
   return (
     <>
