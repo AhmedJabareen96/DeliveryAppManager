@@ -4,21 +4,11 @@ import TextInputGroup from '../Layout/TextInputGroup';
 import { Consumer } from '../../Context'
 import axios from 'axios';
 
-                /*
-        "address": "123 Main Street",
-        "workingHours": "9 AM - 6 PM",
-        "openStatus": "Open",
-        "items": [],
-
-*/
-
-
 class AddContact extends Component {
     constructor(props) {
         super(props);
         this.state = {
           name: '',
-
           address:'',
           carNumber:'',
           carType:'',
@@ -44,12 +34,13 @@ class AddContact extends Component {
         // Perform form validation and submission logic here
         // For simplicity, we're just logging the form data
         console.log(this.state);
-        axios.post("http//localhost://5000/delivers/add")
-
-
-
-
-
+        axios.post("http://localhost:5000/delivers/add", this.state)
+        .then(res => {
+          console.log(res.data);
+        })
+        .catch(err => {
+          console.log(err);
+        });
     
         // Reset the form fields
         this.setState({
