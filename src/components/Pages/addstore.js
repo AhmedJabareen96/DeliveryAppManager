@@ -3,18 +3,35 @@ import { v4 } from 'uuid';
 import TextInputGroup from '../Layout/TextInputGroup';
 import { Consumer } from '../../Context'
 import axios from 'axios';
-
+/*name: {
+    type: String,
+    required: true
+  },
+  address: {
+    type: String,
+    required: true
+  },
+  workingHours: {
+    type: String,
+  },
+  lat: {
+    type: String,
+    required: true
+  },
+  lng: {
+    type: String,
+    required: true
+  }*/
 class AddContact extends Component {
   constructor(props) {
     super(props);
     this.state = {
       name: '',
       address:'',
-      carNumber:'',
-      carType:'',
-      drivingLicense:'',
-      email:'',
-      phoneNumber:'',
+      workingHours:'',
+      lat:'',
+      lng:''
+
 
     };
   }
@@ -28,7 +45,7 @@ class AddContact extends Component {
     // Perform form validation and submission logic here
     // For simplicity, we're just logging the form data
     console.log(this.state);
-    axios.post("http://localhost:5000/delivers/add", this.state)
+    axios.post("http://localhost:5000/stores/add", this.state)
         .then(res => {
           console.log(res.data);
         })
@@ -39,24 +56,24 @@ class AddContact extends Component {
     // Reset the form fields
     this.setState({
       name: '',
-
-
       address:'',
-      carNumber:'',
-      carType:'',
-      drivingLicense:'',
-      email:'',
-      phoneNumber:'',
+      workingHours:'',
+      lat:'',
+      lng:''
+
     });
   };
 
   render() {
-    const { name,address , carNumber, carType , drivingLicense , email , phoneNumber} = this.state;
+    const { name,address ,lat,lng, workingHours, carType , drivingLicense , email , phoneNumber} = this.state;
 
     return (
       <form onSubmit={this.handleSubmit}>
+
+
+
         <div>
-          <label htmlFor="name">Sex:</label>
+          <label htmlFor="name">name:</label>
           <input
             type="text"
             id="name"
@@ -79,60 +96,39 @@ class AddContact extends Component {
           />
         </div>
         <div>
-          <label htmlFor="car Number">car Number :</label>
+          <label htmlFor="car Number">working Hours :</label>
           <input
             type="text"
-            id="carNumber"
-            name="carNumber"
-            value={carNumber}
+            id="workingHours"
+            name="workingHours"
+            value={workingHours}
             onChange={this.handleChange}
             required
           />
         </div>
         <div>
-          <label htmlFor=" car Type">car Type :</label>
+          <label htmlFor=" car Type">lat :</label>
           <input
             type="text"
-            id="carType"
-            name="carType"
-            value={carType}
+            id="lat"
+            name="lat"
+            value={lat}
             onChange={this.handleChange}
             required
           />
         </div>
         <div>
-          <label htmlFor="driving License">driving License :</label>
+          <label htmlFor="driving License">lng :</label>
           <input
             type="text"
-            id="drivingLicense"
-            name="drivingLicense"
-            value={drivingLicense}
+            id="lng"
+            name="lng"
+            value={lng}
             onChange={this.handleChange}
             required
           />
         </div>
-        <div>
-          <label htmlFor="dateOfBirth">email :</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={email}
-            onChange={this.handleChange}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="dateOfBirth">phone Number :</label>
-          <input
-            type="text"
-            id="phoneNumber"
-            name="phoneNumber"
-            value={phoneNumber}
-            onChange={this.handleChange}
-            required
-          />
-        </div>
+
 
 
 
