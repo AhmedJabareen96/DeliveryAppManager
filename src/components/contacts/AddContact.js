@@ -18,8 +18,19 @@ class AddContact extends Component {
         super(props);
         this.state = {
           name: '',
-          licenseNumber: '',
-          dateOfBirth: ''
+
+          address:'',
+          carNumber:'',
+          carType:'',
+          drivingLicense:'',
+          email:'',
+          phoneNumber:'',
+
+
+
+
+
+
         };
       }
     
@@ -33,17 +44,29 @@ class AddContact extends Component {
         // Perform form validation and submission logic here
         // For simplicity, we're just logging the form data
         console.log(this.state);
+        axios.post("http//localhost://5000/delivers/add")
+
+
+
+
+
     
         // Reset the form fields
         this.setState({
           name: '',
-          licenseNumber: '',
-          dateOfBirth: ''
+
+
+          address:'',
+          carNumber:'',
+          carType:'',
+          drivingLicense:'',
+          email:'',
+          phoneNumber:'',
         });
       };
     
       render() {
-        const { name, licenseNumber, dateOfBirth } = this.state;
+        const { name,address , carNumber, carType , drivingLicense , email , phoneNumber} = this.state;
     
         return (
           <form onSubmit={this.handleSubmit}>
@@ -58,28 +81,79 @@ class AddContact extends Component {
                 required
               />
             </div>
+
             <div>
-              <label htmlFor="licenseNumber">License Number:</label>
+              <label htmlFor="address">address:</label>
               <input
                 type="text"
-                id="licenseNumber"
-                name="licenseNumber"
-                value={licenseNumber}
+                id="address"
+                name="address"
+                value={address}
                 onChange={this.handleChange}
                 required
               />
             </div>
             <div>
-              <label htmlFor="dateOfBirth">Date of Birth:</label>
+              <label htmlFor="car Number">car Number :</label>
               <input
-                type="date"
-                id="dateOfBirth"
-                name="dateOfBirth"
-                value={dateOfBirth}
+                type="text"
+                id="carNumber"
+                name="carNumber"
+                value={carNumber}
                 onChange={this.handleChange}
                 required
               />
             </div>
+            <div>
+              <label htmlFor=" car Type">car Type :</label>
+              <input
+                type="text"
+                id="carType"
+                name="carType"
+                value={carType}
+                onChange={this.handleChange}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="driving License">driving License :</label>
+              <input
+                type="text"
+                id="drivingLicense"
+                name="drivingLicense"
+                value={drivingLicense}
+                onChange={this.handleChange}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="dateOfBirth">email :</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={email}
+                onChange={this.handleChange}
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="dateOfBirth">phone Number :</label>
+              <input
+                type="text"
+                id="phoneNumber"
+                name="phoneNumber"
+                value={phoneNumber}
+                onChange={this.handleChange}
+                required
+              />
+            </div>
+    
+    
+
+
+
+
             <button type="submit">Submit</button>
           </form>
         );
