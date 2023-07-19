@@ -16,18 +16,12 @@ class AddContact extends Component {
           email:'',
           phoneNumber:'',
 
-
-
-
-
-
         };
       }
     
       handleChange = (e) => {
         this.setState({ [e.target.name]: e.target.value });
       };
-    
       handleSubmit = (e) => {
         e.preventDefault();
     

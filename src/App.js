@@ -14,6 +14,7 @@ import Login from './components/Login/Login';
 import Register from './components/Register/Register';
 import ForgotYourPassword from './components/ForgotPassword/ForgotYourPassword';
 import { UserContext } from './UserContext';
+import Addstore from "./components/Pages/addstore";
 
 const App = () => {
   const [username, setUsername] = useState();
@@ -28,6 +29,7 @@ const App = () => {
             <Routes>
               <Route exact path="/" element={<Contacts />} />
               <Route exact path="/contact/add" element={<AddContact />} />
+              <Route exact path="/stores/add" element={<Addstore />} />
               <Route exact path="/contact/edit/:id" element={<EditContact />} />
               <Route exact path="/orders" element={<About />} />
               <Route exact path="/login" element={<Login />} />
