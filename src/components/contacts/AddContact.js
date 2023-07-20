@@ -104,7 +104,7 @@ class AddContact extends Component {
         return (
           <form onSubmit={this.handleSubmit} style={formStyle} >
             <div style={formGroupStyle}  >
-              <label htmlFor="name" style={labelStyle} >Name:</label>
+              <label htmlFor="name" style={labelStyle} >Name :</label>
               <input
                 type="text"
                 id="name"
@@ -117,7 +117,7 @@ class AddContact extends Component {
             </div>
 
             <div style={formGroupStyle} >
-              <label htmlFor="address" style={labelStyle} >address:</label>
+              <label htmlFor="address" style={labelStyle} >Address:</label>
               <input
                 type="text"
                 id="address"
@@ -129,7 +129,7 @@ class AddContact extends Component {
               />
             </div>
             <div style={formGroupStyle} >
-              <label htmlFor="car Number" style={labelStyle} >car Number :</label>
+              <label htmlFor="car Number" style={labelStyle} >Car Number :</label>
               <input
                 type="text"
                 id="carNumber"
@@ -141,7 +141,7 @@ class AddContact extends Component {
               />
             </div>
             <div style={formGroupStyle} >
-              <label htmlFor=" car Type" style={labelStyle} >car Type :</label>
+              <label htmlFor=" car Type" style={labelStyle} >Car Type :</label>
               <input
                 type="text"
                 id="carType"
@@ -153,7 +153,7 @@ class AddContact extends Component {
               />
             </div>
             <div style={formGroupStyle} >
-              <label htmlFor="driving License" style={labelStyle} >driving License :</label>
+              <label htmlFor="driving License" style={labelStyle} >Driving License :</label>
               <input
                 type="text"
                 id="drivingLicense"
@@ -165,7 +165,7 @@ class AddContact extends Component {
               />
             </div>
             <div style={formGroupStyle}>
-              <label htmlFor="dateOfBirth" style={labelStyle} >email :</label>
+              <label htmlFor="dateOfBirth" style={labelStyle} >Email :</label>
               <input
                 type="email"
                 id="email"
@@ -177,7 +177,7 @@ class AddContact extends Component {
               />
             </div>
             <div style={formGroupStyle}>
-              <label htmlFor="dateOfBirth" style={labelStyle} >phone Number :</label>
+              <label htmlFor="dateOfBirth" style={labelStyle} >Phone Number :</label>
               <input
                 type="text"
                 id="phoneNumber"

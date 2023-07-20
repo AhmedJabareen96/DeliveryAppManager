@@ -117,7 +117,7 @@ class AddContact extends Component {
 
 
         <div style={formGroupStyle} >
-          <label htmlFor="name" style={labelStyle} >name:</label>
+          <label htmlFor="name" style={labelStyle} > Name :</label>
           <input
             type="text"
             id="name"
@@ -130,7 +130,7 @@ class AddContact extends Component {
         </div>
 
         <div style={formGroupStyle}>
-          <label htmlFor="address" style={labelStyle} >address:</label>
+          <label htmlFor="address" style={labelStyle} >Address :</label>
           <input
             type="text"
             id="address"
@@ -142,7 +142,7 @@ class AddContact extends Component {
           />
         </div>
         <div style={formGroupStyle}>
-          <label htmlFor="car Number" style={labelStyle}>working Hours :</label>
+          <label htmlFor="car Number" style={labelStyle}> Working Hours :</label>
           <input
             type="text"
             id="workingHours"
@@ -154,7 +154,7 @@ class AddContact extends Component {
           />
         </div>
         <div style={formGroupStyle}>
-          <label htmlFor=" car Type" style={labelStyle}>lat :</label>
+          <label htmlFor=" car Type" style={labelStyle}>Lat :</label>
           <input
             type="text"
             id="lat"
@@ -166,7 +166,7 @@ class AddContact extends Component {
           />
         </div>
         <div style={formGroupStyle}>
-          <label htmlFor="driving License" style={labelStyle} >lng :</label>
+          <label htmlFor="driving License" style={labelStyle} >Lng :</label>
           <input
             type="text"
             id="lng"
