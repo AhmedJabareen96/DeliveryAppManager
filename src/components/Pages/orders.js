@@ -102,6 +102,18 @@ const liStyle = {
   textAlign: 'center',
   borderRight: '1px solid #ccc',
 };
+const spanStyle = {
+  display: 'inline-block',
+  padding: '10px',
+  fontSize: '16px',
+  color: '#fff',
+  backgroundColor: '#3498db',
+  borderRadius: '4px',
+  fontFamily: 'Arial, sans-serif',
+  textAlign: 'center',
+  textTransform: 'uppercase',
+};
+
 
 
   const listItems = items.map(order => 
@@ -118,7 +130,7 @@ const liStyle = {
      
               <ul className='list-group' style= {ulStyle}>
               <li className='list-group-item'>List : {order.items}</li>
-                <li className='list-group-item'>Price : $$$$$$$$$$ </li>
+              <li className='list-group-item'>Price : $$$$$$$$$$ </li>
 
 
               </ul>  
@@ -136,7 +148,7 @@ const liStyle = {
       <h1 className="display-4 mb-2" style={{ textAlign: 'center' }}>
         <span className='text-danger'>Orders</span> List
       </h1>
-       <ul >{listItems}</ul>
+       <ul className='list-group' >{listItems}</ul>
     </>
   );
 } 
