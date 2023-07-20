@@ -184,7 +184,7 @@ class AddContact extends Component {
 
 
 
-        <button type="submit">Submit</button>
+        <button type="submit" style={submitButtonStyle} >Submit</button>
       </form>
       );
   }
