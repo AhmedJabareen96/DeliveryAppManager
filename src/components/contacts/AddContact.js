@@ -48,15 +48,63 @@ class AddContact extends Component {
           email:'',
           phoneNumber:'',
         });
+
+
+    
+
+
       };
     
       render() {
         const { name,address , carNumber, carType , drivingLicense , email , phoneNumber} = this.state;
+        const formStyle = {
+          maxWidth: '400px',
+          margin: '0 auto',
+          padding: '20px',
+          backgroundColor: '#f5f5f5',
+          borderRadius: '8px',
+          boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
+        };
     
+        const formGroupStyle = {
+          marginBottom: '20px',
+        };
+    
+        const labelStyle = {
+          display: 'block',
+          marginBottom: '5px',
+          color: '#333',
+          fontWeight: 'bold',
+        };
+    
+        const inputStyle = {
+          width: '100%',
+          padding: '10px',
+          fontSize: '16px',
+          border: '1px solid #ccc',
+          borderRadius: '4px',
+        };
+    
+        const submitButtonStyle = {
+          display: 'block',
+          width: '100%',
+          padding: '12px',
+          backgroundColor: '#4caf50',
+          color: '#fff',
+          border: 'none',
+          borderRadius: '4px',
+          fontSize: '16px',
+          cursor: 'pointer',
+        };
+    
+        const errorMessageStyle = {
+          color: '#f44336',
+          marginTop: '5px',
+        };
         return (
-          <form onSubmit={this.handleSubmit}>
-            <div>
-              <label htmlFor="name">Name:</label>
+          <form onSubmit={this.handleSubmit} style={formStyle} >
+            <div style={formGroupStyle}  >
+              <label htmlFor="name" style={labelStyle} >Name:</label>
               <input
                 type="text"
                 id="name"
@@ -64,11 +112,12 @@ class AddContact extends Component {
                 value={name}
                 onChange={this.handleChange}
                 required
+                style={inputStyle}
               />
             </div>
 
-            <div>
-              <label htmlFor="address">address:</label>
+            <div style={formGroupStyle} >
+              <label htmlFor="address" style={labelStyle} >address:</label>
               <input
                 type="text"
                 id="address"
@@ -76,10 +125,11 @@ class AddContact extends Component {
                 value={address}
                 onChange={this.handleChange}
                 required
+                style={inputStyle}
               />
             </div>
-            <div>
-              <label htmlFor="car Number">car Number :</label>
+            <div style={formGroupStyle} >
+              <label htmlFor="car Number" style={labelStyle} >car Number :</label>
               <input
                 type="text"
                 id="carNumber"
@@ -87,10 +137,11 @@ class AddContact extends Component {
                 value={carNumber}
                 onChange={this.handleChange}
                 required
+                style={inputStyle}
               />
             </div>
-            <div>
-              <label htmlFor=" car Type">car Type :</label>
+            <div style={formGroupStyle} >
+              <label htmlFor=" car Type" style={labelStyle} >car Type :</label>
               <input
                 type="text"
                 id="carType"
@@ -98,10 +149,11 @@ class AddContact extends Component {
                 value={carType}
                 onChange={this.handleChange}
                 required
+                style={inputStyle}
               />
             </div>
-            <div>
-              <label htmlFor="driving License">driving License :</label>
+            <div style={formGroupStyle} >
+              <label htmlFor="driving License" style={labelStyle} >driving License :</label>
               <input
                 type="text"
                 id="drivingLicense"
@@ -109,10 +161,11 @@ class AddContact extends Component {
                 value={drivingLicense}
                 onChange={this.handleChange}
                 required
+                style={inputStyle}
               />
             </div>
-            <div>
-              <label htmlFor="dateOfBirth">email :</label>
+            <div style={formGroupStyle}>
+              <label htmlFor="dateOfBirth" style={labelStyle} >email :</label>
               <input
                 type="email"
                 id="email"
@@ -120,10 +173,11 @@ class AddContact extends Component {
                 value={email}
                 onChange={this.handleChange}
                 required
+                style={inputStyle}
               />
             </div>
-            <div>
-              <label htmlFor="dateOfBirth">phone Number :</label>
+            <div style={formGroupStyle}>
+              <label htmlFor="dateOfBirth" style={labelStyle} >phone Number :</label>
               <input
                 type="text"
                 id="phoneNumber"
@@ -131,6 +185,7 @@ class AddContact extends Component {
                 value={phoneNumber}
                 onChange={this.handleChange}
                 required
+                style={inputStyle}
               />
             </div>
     
@@ -139,7 +194,7 @@ class AddContact extends Component {
 
 
 
-            <button type="submit">Submit</button>
+            <button type="submit" style={submitButtonStyle} >Submit</button>
           </form>
         );
       }
