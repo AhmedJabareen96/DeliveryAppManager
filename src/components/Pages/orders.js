@@ -11,7 +11,20 @@ const About = () => {
         setOrders(response.data);
         
         
-        setItems(response.data.itemIds)
+      } catch (error) {
+        console.log('Error fetching data from the API:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/orders/');
+        
+        
+        setItems(response.data)
       } catch (error) {
         console.log('Error fetching data from the API:', error);
       }
@@ -71,53 +84,52 @@ const hoverStyle = {
 const itemDivStyle = {
   marginBottom: '5px',
 };
+const ulStyle = {
+  listStyle: 'none',
+  padding: '0',
+  margin: '0',
+  display: 'flex',
+  justifyContent: 'center',
+  background: '#f9f9f9',
+  borderRadius: '8px',
+  boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+  fontFamily: 'Arial, sans-serif',
+};
+
+const liStyle = {
+  width: '200px',
+  padding: '20px',
+  textAlign: 'center',
+  borderRight: '1px solid #ccc',
+};
 
 
-  const listItems = Orders.map(order => 
+  const listItems = items.map(order => 
 
 
     
-   <tr key={order.clientId} style={{ ...thTdStyle, ...orderRowStyle }} onMouseOver={() => this.style = {...thTdStyle, ...hoverStyle }} onMouseOut={() => this.style = {...thTdStyle, ...orderRowStyle }}> 
-     <td style={thTdStyle}>created At : <br></br>
-     </td><div>{order.createdAt}</div>
-     <td style={thTdStyle}>order ID : 
-     </td> <div>{order._id}</div>
-     <td style={thTdStyle}>client ID :
-     </td> <div>{order.clientId}</div>
-     <td style={thTdStyle}>Items :
-     </td> {
+   <ul className='list-group' key={order.clientId} style={ulStyle}> 
+    
+     <li className='list-group-item'>order ID : {order._id}
+     </li> 
+     <li className='list-group-item'>client ID : {order.clientId}
+     </li> 
+     <li className='list-group-item'>Items :
+     
+              <ul className='list-group' style= {ulStyle}>
+              <li className='list-group-item'>List : {order.items}</li>
+                <li className='list-group-item'>Price : $$$$$$$$$$ </li>
+
+
+              </ul>  
+     </li> {
      
      <div></div>
-      
-
-  
   
   }
-  
-
-  
-
-
-
-
-
-  
-  </tr>)
-
-  
-
-
-  
-  
-  
+  </ul>)
   ;
-
-
-
-  console.log(Orders)
-
-
-
+  console.log(items)
   return (
 
     <>
@@ -129,4 +141,4 @@ const itemDivStyle = {
   );
 } 
 
-export default About;
+export default About; 
