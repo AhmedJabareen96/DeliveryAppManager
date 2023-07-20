@@ -24,7 +24,7 @@ const About = () => {
 
 /*<table>
   <thead>
-    <tr>
+    <tr> 
       <th>ID</th>
       <th>Name</th>
       <th>Hobbies</th>
@@ -44,17 +44,58 @@ const About = () => {
   </tbody>
 </table>*/
 
+const tableStyle = {
+  width: '100%',
+  borderCollapse: 'collapse',
+  borderSpacing: 0,
+};
+
+const thTdStyle = {
+  padding: '10px',
+  textAlign: 'left',
+  borderBottom: '1px solid #ccc',
+};
+
+const thStyle = {
+  backgroundColor: '#f2f2f2',
+};
+
+const orderRowStyle = {
+  backgroundColor: '#f5f5f5',
+};
+
+const hoverStyle = {
+  backgroundColor: '#eaf1ff',
+};
+
+const itemDivStyle = {
+  marginBottom: '5px',
+};
+
+
   const listItems = Orders.map(order => 
-   <tr key={order.clientId}> 
-     <td>created At :</td>{order.createdAt}:
-     <td>order ID : </td> {order._id}:
-     <td>client ID :</td> {order.clientId}:
-     <td>Items :</td> { 
+
+
+    
+   <tr key={order.clientId} style={{ ...thTdStyle, ...orderRowStyle }} onMouseOver={() => this.style = {...thTdStyle, ...hoverStyle }} onMouseOut={() => this.style = {...thTdStyle, ...orderRowStyle }}> 
+     <td style={thTdStyle}>created At : <br></br>
+     </td><div>{order.createdAt}</div>
+     <td style={thTdStyle}>order ID : 
+     </td> <div>{order._id}</div>
+     <td style={thTdStyle}>client ID :
+     </td> <div>{order.clientId}</div>
+     <td style={thTdStyle}>Items :
+     </td> {
+     
+     <div></div>
       
 
   
   
-  };
+  }
+  
+
+  
 
 
 
@@ -83,13 +124,7 @@ const About = () => {
       <h1 className="display-4 mb-2" style={{ textAlign: 'center' }}>
         <span className='text-danger'>Orders</span> List
       </h1>
-       <ul className='list-group-item'>{listItems}</ul>
-
-
-      
-       <ul className='list-group'>
-        <li></li>
-      </ul>
+       <ul >{listItems}</ul>
     </>
   );
 } 
