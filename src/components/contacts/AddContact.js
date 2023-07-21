@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { v4 } from 'uuid';
 import TextInputGroup from '../Layout/TextInputGroup';
 import { Consumer } from '../../Context'
+import { UserContext } from '../../UserContext';
 import axios from 'axios';
 
 class AddContact extends Component {
@@ -39,8 +40,6 @@ class AddContact extends Component {
         // Reset the form fields
         this.setState({
           name: '',
-
-
           address:'',
           carNumber:'',
           carType:'',
@@ -57,6 +56,7 @@ class AddContact extends Component {
     
       render() {
         const { name,address , carNumber, carType , drivingLicense , email , phoneNumber} = this.state;
+        const { username, isLoggedIn, setIsLoggedIn } = this.context;
         const formStyle = {
           maxWidth: '400px',
           margin: '0 auto',
