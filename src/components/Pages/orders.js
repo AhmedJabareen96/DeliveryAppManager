@@ -4,6 +4,8 @@ import axios from 'axios';
 const About = () => {
   const [Orders, setOrders] = useState([]);
   const [items,setItems] = useState([]);
+  const [hafatsem,setHafatsem] = useState([]);
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -26,6 +28,20 @@ const About = () => {
         
         setItems(response.data)
       } catch (error) {
+        console.log('Error fetching data from the API:', error);
+      }
+    };
+
+    fetchData();
+  }, []);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/items/');
+        setHafatsem(response.data);
+       // console.log("hafatsem" + hafatsem)  
+
+      } catch (error) { 
         console.log('Error fetching data from the API:', error);
       }
     };
@@ -114,34 +130,73 @@ const spanStyle = {
   textTransform: 'uppercase',
 };
 
+const spliter =  [];
+// for (const key in hafatsem) {
+//   spliter.push(key);
+//   spliter.push(hafatsem[key]); 
+// } 
 
-
-  const listItems = items.map(order => 
-
-
-    
-   <ul className='list-group' key={order.clientId} style={ulStyle}> 
-    
-     <li className='list-group-item'>order ID : {order._id}
-     </li> 
-     <li className='list-group-item'>client ID : {order.clientId}
-     </li> 
-     <li className='list-group-item'>Items :
-     
-              <ul className='list-group' style= {ulStyle}>
-              <li className='list-group-item'>List : {order.items}</li>
-              <li className='list-group-item'>Price : $$$$$$$$$$ </li>
-
-
-              </ul>  
-     </li> {
-     
-     <div></div>
-  
+function mapObjectToCategory(hafatsem, spliter) {
+for (const key in hafatsem) {
+  if (typeof hafatsem[key] === "object" && hafatsem[key] !== null) {
+    // If the value is an object (and not null), recursively handle it
+    mapObjectToCategory(hafatsem[key], spliter);
+  } else {
+    // Otherwise, push the property and its value to the array
+    spliter.push(key);
+    spliter.push(hafatsem[key]);
   }
-  </ul>)
+}
+}
+mapObjectToCategory(hafatsem, spliter)
+
+//console.log("result array " + spliter); 
+
+
+     // const result = order.items.split(',')
+      //console.log(result) 
+
+
+
+    
+       
+
+
+
+
+
+ 
+  const listItems = items.map(order => 
+    
+    
+    <ul className='list-group' key={order.clientId} style={ulStyle}>
+
+        <li className='list-group-item'>order ID : {order._id}
+        </li>
+        <li className='list-group-item'>client ID : {order.clientId}
+        </li>
+        <li className='list-group-item'>Items :
+
+          <ul className='list-group' style={ulStyle}>
+            <li className='list-group-item'>List : {
+            
+            
+            order.items
+
+
+        
+      
+       
+            }
+            </li>
+            <li className='list-group-item'>Price : $$$$$$$$$$ </li>
+
+
+          </ul>
+        </li> {<div></div>}
+      </ul>)
   ;
-  console.log(items)
+  //console.log(items)
   return (
 
     <>

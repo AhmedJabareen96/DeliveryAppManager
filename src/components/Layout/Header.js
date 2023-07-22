@@ -55,6 +55,11 @@ const Header = (props) => {
                   </Link>
                 </li>
                 <li className="nav-item">
+                  <Link to="./Pages/additem" className="nav-link" style={{ color: 'white' }}>
+                    <i className="fa fa-plus"></i> Add Item
+                  </Link>
+                </li>
+                <li className="nav-item">
                   <Link to="/login" className="nav-link" style={{ color: 'white' }} onClick={handleLogout}>
                     <i className="fa fa-sign-out"></i> Logout
                   </Link>

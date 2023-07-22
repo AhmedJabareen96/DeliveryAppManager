@@ -1,8 +1,10 @@
-import React, { Component } from 'react'
 import { v4 } from 'uuid';
 import TextInputGroup from '../Layout/TextInputGroup';
 import { Consumer } from '../../Context'
 import axios from 'axios';
+import React, {Component, useEffect, useState } from 'react';
+import PhotoUpload from './uploadPhoto';
+
 /*name: {
     type: String,
     required: true
@@ -22,19 +24,26 @@ import axios from 'axios';
     type: String,
     required: true
   }*/
-class AddContact extends Component {
+class AddItem extends Component {
+
+
+
+  
   constructor(props) {
     super(props);
     this.state = {
       name: '',
-      address:'',
-      workingHours:'',
-      lat:'',
-      lng:'',
-      itemsList:''
+      price:'',
+      catagory:'',
+      stores:'',
+      id:'',
+      createdAt:'',
+      selectedFile: null
 
 
     };
+
+    
   }
 
   handleChange = (e) => {
@@ -53,22 +62,48 @@ class AddContact extends Component {
         .catch(err => {
           console.log(err);
         });
+        const [items, setItems] = useState([]);
+        useEffect(() => {
+          const fetchData = async () => {
+            try {
+              const response = await axios.get('http://localhost:5000/items/');
+              setItems(response.data);
+              console.log("item looks like this " + items) 
+      
+            } catch (error) { 
+              console.log('Error fetching data from the API:', error);
+            }
+          };
+      
+          fetchData();
+        }, []);
 
+
+
+       
     // Reset the form fields
     this.setState({
       name: '',
-      address:'',
-      workingHours:'',
-      lat:'',
-      lng:'',
-      itemsList:''
+      price:'',
+      catagory:'',
+      stores:'',
+      id:'',
+      createdAt:'',
+      selectedFile: null
 
 
     });
   };
 
+  
+
   render() {
-    const { name,address ,lat,lng, workingHours, carType , drivingLicense , email , phoneNumber} = this.state;
+
+
+
+
+    
+    const { name,price ,catagory,stores, id, createdAt , drivingLicense , email , phoneNumber} = this.state;
     const formStyle = {
       maxWidth: '400px',
       margin: '0 auto',
@@ -114,9 +149,12 @@ class AddContact extends Component {
       marginTop: '5px',
     };
 
+
+
+    
+
     return (
       <form onSubmit={this.handleSubmit} style={formStyle} >
-
 
 
         <div style={formGroupStyle} >
@@ -133,65 +171,74 @@ class AddContact extends Component {
         </div>
 
         <div style={formGroupStyle}>
-          <label htmlFor="address" style={labelStyle} >Address :</label>
+          <label htmlFor="createdAt" style={labelStyle} >Price :</label>
           <input
             type="text"
-            id="address"
-            name="address"
-            value={address}
+            id="price"
+            name="price"
+            value={price}
             onChange={this.handleChange}
             required
             style={inputStyle}
           />
         </div>
         <div style={formGroupStyle}>
-          <label htmlFor="car Number" style={labelStyle}> Working Hours :</label>
+          <label htmlFor="car Number" style={labelStyle}> Catagory :</label>
           <input
             type="text"
             id="workingHours"
             name="workingHours"
-            value={workingHours}
+            value={catagory}
             onChange={this.handleChange}
             required
             style={inputStyle}
           />
         </div>
         <div style={formGroupStyle}>
-          <label htmlFor=" car Type" style={labelStyle}>Lat :</label>
+          <label htmlFor=" car Type" style={labelStyle}>Stores :</label>
           <input
             type="text"
             id="lat"
             name="lat"
-            value={lat}
+            value={stores}
             onChange={this.handleChange}
             required
             style={inputStyle}
           />
         </div>
         <div style={formGroupStyle}>
-          <label htmlFor="driving License" style={labelStyle} >Lng :</label>
+          <label htmlFor="driving License" style={labelStyle} >ID :</label>
           <input
             type="text"
             id="lng"
             name="lng"
-            value={lng}
+            value={id}
             onChange={this.handleChange}
             required
             style={inputStyle}
           />
         </div>
         <div style={formGroupStyle}>
-          <label htmlFor="items list : (1,5,7...)" style={labelStyle} > items list : (1,5,7...) :</label>
+          <label htmlFor="items list : (1,5,7...)" style={labelStyle} > Created At :</label>
           <input
             type="text"
             id="lng"
             name="lng"
-            value={lng}
+            value={createdAt}
             onChange={this.handleChange}
             required
             style={inputStyle}
           />
         </div>
+
+
+      <div style={formGroupStyle}>
+        <PhotoUpload>
+          
+
+
+        </PhotoUpload>
+      </div>
 
 
 
@@ -205,4 +252,4 @@ class AddContact extends Component {
   }
 }
 
-export default AddContact
+export default AddItem

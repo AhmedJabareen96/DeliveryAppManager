@@ -16,6 +16,8 @@ import ForgotYourPassword from './components/ForgotPassword/ForgotYourPassword';
 import { UserContext } from './UserContext';
 import Addstore from "./components/Pages/addstore";
 
+import AddItem from "./components/Pages/addItem";
+
 const App = () => {
   const [username, setUsername] = useState();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -30,6 +32,7 @@ const App = () => {
               <Route exact path="/" element={<Contacts />} />
               <Route exact path="/contact/add" element={<AddContact />} />
               <Route exact path="/stores/add" element={<Addstore />} />
+              <Route exact path="/Pages/additem" element={<AddItem />} />
               <Route exact path="/contact/edit/:id" element={<EditContact />} />
               <Route exact path="/orders" element={<About />} />
               <Route exact path="/login" element={<Login />} />

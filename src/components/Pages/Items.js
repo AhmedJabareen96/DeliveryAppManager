@@ -8,7 +8,7 @@ const About = () => {
       try {
         const response = await axios.get('http://localhost:5000/items/');
         setItems(response.data);
-        console.log(items) 
+        console.log("item looks like this " + items) 
 
       } catch (error) { 
         console.log('Error fetching data from the API:', error);
