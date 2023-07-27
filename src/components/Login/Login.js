@@ -7,9 +7,9 @@ import axios from "axios";
 import { UserContext } from "../../UserContext";
 
 const Login = () => {
-    const { username, setUsername, isLoggedIn, setIsLoggedIn } = useContext(UserContext);
+    const { username, setUsername, setIsLoggedIn } = useContext(UserContext);
     const navigate = useNavigate();
-    const [password, setPassword] = useState();
+    const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
 
     function handleLoginButton() {
@@ -17,15 +17,16 @@ const Login = () => {
             email: username,
             password: password
         })
-        .then(() => {
-            console.log(`Hello ${username}`);
-            setIsLoggedIn(true);
-            navigate('/');
-        })
-        .catch(err => {
-            console.log(err);
-            setErrorMessage('Invalid email/password');
-        });
+    .then(() => {
+        console.log(`Hello ${username}`);
+        setIsLoggedIn(true); // Make sure this sets the isLoggedIn state correctly in the UserContext
+        localStorage.setItem("isLoggedIn", "true"); // Store the value as a string
+        navigate('/');
+    })
+    .catch(err => {
+        console.log(err);
+        setErrorMessage('Invalid email/password');
+    });
     }
 
     function handleUsernameChange(event) {

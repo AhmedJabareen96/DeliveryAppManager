@@ -10,7 +10,11 @@ const Header = (props) => {
 
   const handleLogout = () => {
     setIsLoggedIn(false);
+    localStorage.setItem("isLoggedIn", "false"); // Store the value as a string
   };
+
+  // Convert the value to a boolean to make the condition check clearer
+  const isUserLoggedIn = localStorage.getItem("isLoggedIn") === "true";
 
   return (
     <nav className="navbar navbar-expand-sm navbar-dark bg-danger mb-3 py-0">
@@ -21,7 +25,7 @@ const Header = (props) => {
 
         <div className="row">
           <ul className="navbar nav mr-auto">
-            {isLoggedIn === false ? (
+            {!isUserLoggedIn ? (
               <li className="nav-item">
                 <Link to="/login" className="nav-link" style={{ color: 'white' }}>
                   <i className="fa fa-plus"></i> Login
@@ -78,7 +82,7 @@ Header.defaultProps = {
 };
 
 Header.propTypes = {
-    branding: PropTypes.string.isRequired,
+  branding: PropTypes.string.isRequired,
 };
 
 export default Header;

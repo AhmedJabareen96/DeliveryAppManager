@@ -19,11 +19,12 @@ import Addstore from "./components/Pages/addstore";
 import AddItem from "./components/Pages/addItem";
 
 const App = () => {
-  const [username, setUsername] = useState();
+  const [username, setUsername] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   return (
     <UserContext.Provider value={{username, setUsername, isLoggedIn, setIsLoggedIn}}>
     <Provider>
+      {console.log(localStorage.getItem("isLoggedIn"))}
       <BrowserRouter>
         <div className="App">
           <Header branding="Contact Manager" />
