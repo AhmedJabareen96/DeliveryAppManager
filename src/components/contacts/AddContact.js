@@ -16,6 +16,7 @@ class AddContact extends Component {
           drivingLicense:'',
           email:'',
           phoneNumber:'',
+          password:''
 
         };
       }
@@ -46,6 +47,7 @@ class AddContact extends Component {
           drivingLicense:'',
           email:'',
           phoneNumber:'',
+          password:''
         });
 
 
@@ -55,7 +57,7 @@ class AddContact extends Component {
       };
     
       render() {
-        const { name,address , carNumber, carType , drivingLicense , email , phoneNumber} = this.state;
+        const {password, name,address , carNumber, carType , drivingLicense , email , phoneNumber} = this.state;
         const { username, isLoggedIn, setIsLoggedIn } = this.context;
         const formStyle = {
           maxWidth: '400px',
@@ -187,7 +189,20 @@ class AddContact extends Component {
                 required
                 style={inputStyle}
               />
+            </div>        
+                <div style={formGroupStyle}>
+              <label htmlFor="password" style={labelStyle} > Password :</label>
+              <input
+                type="text"
+                id="password"
+                name="password"
+                value={password}
+                onChange={this.handleChange}
+                required
+                style={inputStyle}
+              />
             </div>
+            
     
     
 
