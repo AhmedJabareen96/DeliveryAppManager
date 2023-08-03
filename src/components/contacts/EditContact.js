@@ -16,7 +16,7 @@ class EditContact extends Component {
     // get the contacts data from here
 const res = await axios.get('http://localhost:5000/delivers/')
         // .then(response => response.json())
-        console.log(res.data);
+        //console.log(res.data);
         this.setState({ contacts : res.data })
 
 }
@@ -26,7 +26,16 @@ const res = await axios.get('http://localhost:5000/delivers/')
         const ID = window.location.href.split("/")
         alert(ID[ID.length-1])
 
-        axios.put("http//localhost:5000/delivers/update/"+ID[ID.length-1,this.state]);
+        axios.put("http//localhost:5000/delivers/update/"+ID[ID.length-1,this.state])
+        .then(res => {
+
+            console.log(res)
+
+        }).catch(error => {
+            console.log(error)
+
+
+        })
         alert("done update!")
 
 

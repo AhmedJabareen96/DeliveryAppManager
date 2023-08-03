@@ -11,7 +11,18 @@ class Contact extends Component {
   }; 
 
   onDeleteClick = async (id, dispatch) => {
-    await axios.delete(`http://jsonplaceholder.typicode.com/users/${id}`);
+    console.log("the id is : " + id)
+     axios.delete("http://localhost:5000/delivers/delete/" + id)
+     .then(res => {
+
+      console.log(res)
+
+     }).catch(error => {
+
+      console.log(error)
+
+     }) 
+     
     
     dispatch( {type : 'DELETE_CONTACT', payload : id})
   }
@@ -30,7 +41,7 @@ class Contact extends Component {
         return ( 
           <div className='card card-body mb-3'>
             <h2>{name} <i onClick={ () => this.setState({ showContactInfo: !this.state.showContactInfo })} className="fas fa-sort-down" style={{cursor : 'pointer'}}/>
-              <i className="fas fa-times" style={{cursor : 'pointer', float : 'right', color : 'red'}} onClick = { this.onDeleteClick.bind(this, id, dispatch) } />
+              <i className="fas fa-times" style={{cursor : 'pointer', float : 'right', color : 'red'}} onClick = { this.onDeleteClick.bind(this, _id, dispatch) } />
               
               <Link to={`contact/edit/${_id}`}>
                 
