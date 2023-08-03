@@ -34,12 +34,13 @@ const res = await axios.get('http://localhost:5000/delivers/')
             carType : this.state.carType,
             carNumber : this.state.carNumber
         };
+        console.log(temp)
 
         const ID = window.location.href.split("/")
         alert(ID[ID.length-1])
         console.log(this.state)
 
-        axios.put("http//localhost:5000/delivers/update/"+ID[ID.length-1,temp])
+        axios.put("http://localhost:5000/delivers/update/"+ID[ID.length-1],temp)
         .then(res => {
 
             console.log(res)
@@ -64,7 +65,7 @@ const res = await axios.get('http://localhost:5000/delivers/')
     });
 
   render() {
-    const { name, email, phoneNumber,carType,carNumber ,createdAt,drivingLicense,_id} = this.state;
+    const { name, email, phoneNumber,carType,carNumber ,password,createdAt,drivingLicense,_id} = this.state;
    // alert(this.state._id)
    // const { id, name, email, phoneNumber    } = this.props.contact;
 
@@ -95,20 +96,20 @@ const res = await axios.get('http://localhost:5000/delivers/')
                                         label= 'Phone' name = 'phone' placeholder= 'Enter number' value= {phoneNumber} onChange = {this.onChange} type = 'phone' 
                                     />
                                       <TextInputGroup 
-                                        label= 'Car Type' name = 'Car Type' placeholder= 'car Type' value= {carType} onChange = {this.onChange} type = 'phone' 
+                                        label= 'carType' name = 'carType' placeholder= 'carType' value= {carType} onChange = {this.onChange} type = 'carType' 
                                     />
                                       <TextInputGroup 
-                                        label= 'Car Number' name = 'phone' placeholder= 'car Number' value= {carNumber} onChange = {this.onChange} type = 'phone' 
+                                        label= 'carNumber' name = 'carNumber' placeholder= 'carNumber' value= {carNumber} onChange = {this.onChange} type = 'carNumber' 
                                     />
                                   
                                       <TextInputGroup 
                                         label= 'Driving License' name = 'phone' placeholder= 'Enter Driving license' value= {drivingLicense} onChange = {this.onChange} type = 'phone' 
                                     />
                                       <TextInputGroup 
-                                        label= 'ID' name = 'phone' placeholder= 'Enter ID' value= {_id} onChange = {this.onChange} type = 'phone' 
+                                        label= '_id' name = '_id' placeholder= '_id' value= {_id} onChange = {this.onChange} type = '_id' 
                                     />
                                     <TextInputGroup 
-                                        label= 'password' name = 'password' placeholder= 'Enter password' value= {_id} onChange = {this.onChange} type = 'password' 
+                                        label= 'password' name = 'password' placeholder= 'Enter password' value= {password} onChange = {this.onChange} type = 'password' 
                                     />
                                     <div class="d-grid col-6 mx-auto">
                                         <input class="btn btn-danger mt-2" value="Update Contact" type="submit" />
