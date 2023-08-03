@@ -11,7 +11,7 @@ const About = () => {
       try {
         const response = await axios.get('http://localhost:5000/deliveries/');
         setOrders(response.data);
-        
+
         
       } catch (error) {
         console.log('Error fetching data from the API:', error);
@@ -25,7 +25,8 @@ const About = () => {
       try {
         const response = await axios.get('http://localhost:5000/orders/');
         
-        
+        console.log("this is orders : ")
+        console.log(response.data) 
         setItems(response.data)
       } catch (error) {
         console.log('Error fetching data from the API:', error);
@@ -39,7 +40,7 @@ const About = () => {
       try {
         const response = await axios.get('http://localhost:5000/items/');
         setHafatsem(response.data);
-       // console.log("hafatsem" + hafatsem)  
+       //console.log( hafatsem)  
 
       } catch (error) { 
         console.log('Error fetching data from the API:', error);
@@ -153,8 +154,6 @@ mapObjectToCategory(hafatsem, spliter)
 //console.log("result array " + spliter); 
 
 
-     // const result = order.items.split(',')
-      //console.log(result) 
 
 
 
@@ -189,7 +188,7 @@ mapObjectToCategory(hafatsem, spliter)
        
             }
             </li>
-            <li className='list-group-item'>Price : $$$$$$$$$$ </li>
+            <li className='list-group-item'>Price : {} </li>
 
 
           </ul>

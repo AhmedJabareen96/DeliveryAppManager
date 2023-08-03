@@ -32,13 +32,11 @@ class AddItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      price:'',
-      catagory:'',
-      stores:'',
-      id:'',
-      createdAt:'',
-      selectedFile: null
+      title: '',
+      price:0,
+      category:'',
+      id:0,
+      image: ''
 
 
     };
@@ -55,43 +53,25 @@ class AddItem extends Component {
     // Perform form validation and submission logic here
     // For simplicity, we're just logging the form data
     console.log(this.state);
-    axios.post("http://localhost:5000/stores/add", this.state)
+    axios.post("http://localhost:5000/items/add", this.state)
         .then(res => {
           console.log(res.data);
         })
         .catch(err => {
           console.log(err);
         });
-        const [items, setItems] = useState([]);
-        useEffect(() => {
-          const fetchData = async () => {
-            try {
-              const response = await axios.get('http://localhost:5000/items/');
-              setItems(response.data);
-              console.log("item looks like this " + items) 
-      
-            } catch (error) { 
-              console.log('Error fetching data from the API:', error);
-            }
-          };
-      
-          fetchData();
-        }, []);
+ 
 
 
 
        
     // Reset the form fields
     this.setState({
-      name: '',
-      price:'',
-      catagory:'',
-      stores:'',
-      id:'',
-      createdAt:'',
-      selectedFile: null
-
-
+      title: '',
+      price:0,
+      category:'',
+      id:0,
+      image: ''
     });
   };
 
@@ -103,7 +83,7 @@ class AddItem extends Component {
 
 
     
-    const { name,price ,catagory,stores, id, createdAt , drivingLicense , email , phoneNumber} = this.state;
+    const { title,price ,catagory,stores, id,image, createdAt , drivingLicense , email , phoneNumber} = this.state;
     const formStyle = {
       maxWidth: '400px',
       margin: '0 auto',
@@ -151,19 +131,18 @@ class AddItem extends Component {
 
 
 
-    
 
     return (
       <form onSubmit={this.handleSubmit} style={formStyle} >
 
 
         <div style={formGroupStyle} >
-          <label htmlFor="name" style={labelStyle} > Name :</label>
+          <label htmlFor="title" style={labelStyle} > Name :</label>
           <input
             type="text"
-            id="name"
-            name="name"
-            value={name}
+            id="title"
+            name="title"
+            value={title}
             onChange={this.handleChange}
             required
             style={inputStyle}
@@ -171,9 +150,9 @@ class AddItem extends Component {
         </div>
 
         <div style={formGroupStyle}>
-          <label htmlFor="createdAt" style={labelStyle} >Price :</label>
+          <label htmlFor="price" style={labelStyle} >Price :</label>
           <input
-            type="text"
+            type="number"
             id="price"
             name="price"
             value={price}
@@ -183,35 +162,24 @@ class AddItem extends Component {
           />
         </div>
         <div style={formGroupStyle}>
-          <label htmlFor="car Number" style={labelStyle}> Catagory :</label>
+          <label htmlFor="category" style={labelStyle}> category :</label>
           <input
             type="text"
-            id="workingHours"
-            name="workingHours"
+            id="category"
+            name="category"
             value={catagory}
             onChange={this.handleChange}
             required
             style={inputStyle}
           />
         </div>
+
         <div style={formGroupStyle}>
-          <label htmlFor=" car Type" style={labelStyle}>Stores :</label>
+          <label htmlFor="id" style={labelStyle} >ID :</label>
           <input
-            type="text"
-            id="lat"
-            name="lat"
-            value={stores}
-            onChange={this.handleChange}
-            required
-            style={inputStyle}
-          />
-        </div>
-        <div style={formGroupStyle}>
-          <label htmlFor="driving License" style={labelStyle} >ID :</label>
-          <input
-            type="text"
-            id="lng"
-            name="lng"
+            type="number"
+            id="id"
+            name="id"
             value={id}
             onChange={this.handleChange}
             required
@@ -219,12 +187,12 @@ class AddItem extends Component {
           />
         </div>
         <div style={formGroupStyle}>
-          <label htmlFor="items list : (1,5,7...)" style={labelStyle} > Created At :</label>
+          <label htmlFor="image" style={labelStyle} >URL :</label>
           <input
             type="text"
-            id="lng"
-            name="lng"
-            value={createdAt}
+            id="image"
+            name="image"
+            value={image}
             onChange={this.handleChange}
             required
             style={inputStyle}
@@ -232,13 +200,14 @@ class AddItem extends Component {
         </div>
 
 
-      <div style={formGroupStyle}>
-        <PhotoUpload>
+
+      {/* <div style={formGroupStyle}>
+        <PhotoUpload >
           
 
 
         </PhotoUpload>
-      </div>
+      </div> */}
 
 
 
