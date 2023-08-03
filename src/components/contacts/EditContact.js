@@ -23,10 +23,23 @@ const res = await axios.get('http://localhost:5000/delivers/')
 
     onSubmit = async (dispatch, e) => {
 
+
+        let temp = {
+            name : this.state.name,
+            email : this.state.email,
+            phoneNumber : this.state.phone,
+            password : this.state.password,
+            address : this.state.address,
+            drivingLicense : this.state.drivingLicense,
+            carType : this.state.carType,
+            carNumber : this.state.carNumber
+        };
+
         const ID = window.location.href.split("/")
         alert(ID[ID.length-1])
+        console.log(this.state)
 
-        axios.put("http//localhost:5000/delivers/update/"+ID[ID.length-1,this.state])
+        axios.put("http//localhost:5000/delivers/update/"+ID[ID.length-1,temp])
         .then(res => {
 
             console.log(res)
@@ -93,6 +106,9 @@ const res = await axios.get('http://localhost:5000/delivers/')
                                     />
                                       <TextInputGroup 
                                         label= 'ID' name = 'phone' placeholder= 'Enter ID' value= {_id} onChange = {this.onChange} type = 'phone' 
+                                    />
+                                    <TextInputGroup 
+                                        label= 'password' name = 'password' placeholder= 'Enter password' value= {_id} onChange = {this.onChange} type = 'password' 
                                     />
                                     <div class="d-grid col-6 mx-auto">
                                         <input class="btn btn-danger mt-2" value="Update Contact" type="submit" />

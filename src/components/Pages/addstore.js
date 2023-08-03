@@ -31,7 +31,7 @@ class AddContact extends Component {
       workingHours:'',
       lat:'',
       lng:'',
-      itemsList:''
+      items : ''
 
 
     };
@@ -61,14 +61,14 @@ class AddContact extends Component {
       workingHours:'',
       lat:'',
       lng:'',
-      itemsList:''
+      items : ''
 
 
     });
   };
 
   render() {
-    const { name,address ,lat,lng, workingHours, carType , drivingLicense , email , phoneNumber} = this.state;
+    const { name,address ,lat,lng, workingHours,items, carType , drivingLicense , email , phoneNumber} = this.state;
     const formStyle = {
       maxWidth: '400px',
       margin: '0 auto',
@@ -184,9 +184,9 @@ class AddContact extends Component {
           <label htmlFor="items list : (1,5,7...)" style={labelStyle} > items list : (1,5,7...) :</label>
           <input
             type="text"
-            id="lng"
-            name="lng"
-            value={lng}
+            id="items"
+            name="items"
+            value={items}
             onChange={this.handleChange}
             required
             style={inputStyle}
