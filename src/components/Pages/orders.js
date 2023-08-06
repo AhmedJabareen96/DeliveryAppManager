@@ -21,10 +21,10 @@ const About = () => {
     fetchData();
   }, []);
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchData = async () => { 
       try {
         const response = await axios.get('http://localhost:5000/orders/');
-        
+         
         console.log("this is orders : ")
         console.log(response.data) 
         setItems(response.data)
@@ -131,7 +131,7 @@ const spanStyle = {
   textTransform: 'uppercase',
 };
 
-const spliter =  [];
+const spliter =  []; 
 // for (const key in hafatsem) {
 //   spliter.push(key);
 //   spliter.push(hafatsem[key]); 
@@ -149,7 +149,7 @@ for (const key in hafatsem) {
   }
 }
 }
-mapObjectToCategory(hafatsem, spliter)
+mapObjectToCategory(hafatsem, spliter)  
 
 //console.log("result array " + spliter); 
 
@@ -188,7 +188,7 @@ mapObjectToCategory(hafatsem, spliter)
        
             }
             </li>
-            <li className='list-group-item'>Price : {} </li>
+            <li className='list-group-item'>Price : {order.price} </li>
 
 
           </ul>
